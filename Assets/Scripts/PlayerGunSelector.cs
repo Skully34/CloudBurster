@@ -13,7 +13,7 @@ public class PlayerGunSelector : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             Gun.Shoot();
         }
