@@ -4571,11 +4571,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10132494dd9bd6c48aeef9926ff9073a, type: 3}
---- !u!1 &729873534073030816 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6611263909301836472, guid: 10132494dd9bd6c48aeef9926ff9073a, type: 3}
-  m_PrefabInstance: {fileID: 729873534073030815}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4131033895561216455
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4594,7 +4589,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5435242068170224398, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.34
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 5435242068170224398, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4628,80 +4623,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: 'managedReferences[3702058230727836430]'
-      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule]], mscorlib]]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: 'managedReferences[3702058230727836492]'
-      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject,
-        UnityEngine.CoreModule]], mscorlib]]'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: managedReferences[3702058230727836430].Name
-      value: Waypoints
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: managedReferences[3702058230727836492].Name
-      value: Waypoints
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: m_BlackboardVariableOverridesList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[1]'
-      value: 3702058230727836492
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: managedReferences[3702058230727836430].GUID.m_Value0
-      value: 16034518294401545815
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: managedReferences[3702058230727836430].GUID.m_Value1
-      value: 12090424872861315428
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: managedReferences[3702058230727836492].GUID.m_Value0
-      value: 16034518294401545815
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: managedReferences[3702058230727836492].GUID.m_Value1
-      value: 12090424872861315428
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: managedReferences[3702058230727836430].m_Value.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: managedReferences[3702058230727836492].m_Value.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: 'managedReferences[3702058230727836430].m_Value.Array.data[0]'
-      value: 
-      objectReference: {fileID: 5931503135943991482, guid: ce08352e68af3bf439954de58e0fe142, type: 3}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: 'managedReferences[3702058230727836430].m_Value.Array.data[1]'
-      value: 
-      objectReference: {fileID: 729873534073030816}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: 'managedReferences[3702058230727836430].m_Value.Array.data[2]'
-      value: 
-      objectReference: {fileID: 4773286945456373031}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: 'managedReferences[3702058230727836492].m_Value.Array.data[0]'
-      value: 
-      objectReference: {fileID: 5931503135943991482, guid: ce08352e68af3bf439954de58e0fe142, type: 3}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: 'managedReferences[3702058230727836492].m_Value.Array.data[1]'
-      value: 
-      objectReference: {fileID: 6611263909301836472, guid: 10132494dd9bd6c48aeef9926ff9073a, type: 3}
-    - target: {fileID: 6108209510393630629, guid: eea07ed0f59b2764296099362e4e00bc, type: 3}
-      propertyPath: 'managedReferences[3702058230727836492].m_Value.Array.data[2]'
-      value: 
-      objectReference: {fileID: 264000247964403696, guid: 4cb744695eb74a740ba6b38cb02f7c8a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4821,11 +4742,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cb744695eb74a740ba6b38cb02f7c8a, type: 3}
---- !u!1 &4773286945456373031 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 264000247964403696, guid: 4cb744695eb74a740ba6b38cb02f7c8a, type: 3}
-  m_PrefabInstance: {fileID: 4773286945456373030}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5429883208206120463
 PrefabInstance:
   m_ObjectHideFlags: 0
