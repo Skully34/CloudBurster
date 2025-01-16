@@ -6,7 +6,7 @@ namespace Guns.Gun
     [CreateAssetMenu(fileName = "Gun", menuName = "Guns/Gun", order = 0)]
     public class GunScriptableObject : ScriptableObject
     {
-        // Configs
+        // ReuConfigs
         public ShootConfigScriptableObject ShootConfig;
 
         public GunType Type;
@@ -16,14 +16,16 @@ namespace Guns.Gun
         public Vector3 SpawnRotation;
 
         private MonoBehaviour ActiveMonoBehaviour;
+        private ParticleSystem ShootSystem;
         private GameObject Model;
         private float LastShootTime;
-        private ParticleSystem ShootSystem;
+        private float CurrentAmmo;
 
         public void Spawn(Transform parent, MonoBehaviour activeMonoBehaviour)
         {
             ActiveMonoBehaviour = activeMonoBehaviour;
             LastShootTime = 0;
+            CurrentAmmo = ShootConfig.BaseAmmo;
 
             Model = Instantiate(ModelPrefab);
             Model.transform.SetParent(parent, false);
@@ -35,29 +37,37 @@ namespace Guns.Gun
 
         public void Shoot()
         {
-            if (Time.time > ShootConfig.FireRate + LastShootTime)
+            if (Time.time > ShootConfig.SecondsBetweenShots + LastShootTime)
             {
                 LastShootTime = Time.time;
+                if (CurrentAmmo == 0)
+                {
+                    Debug.Log("Out of ammo m8");
+                    return;
+                }
 
                 ShootSystem.Play();
 
-                Vector3 shootDirection = ShootSystem.transform.forward;
+                Vector2 shootDirection = Vector2.right;
 
                 _DoHitscanShoot(shootDirection);
+
+                CurrentAmmo--;
             }
         }
 
-        private void _DoHitscanShoot(Vector3 shootDirection)
+        private void _DoHitscanShoot(Vector2 shootDirection)
         {
-            if (Physics.Raycast(
-                    ShootSystem.transform.position,
+            RaycastHit2D hit = Physics2D.Raycast(
+                    new Vector2(ShootSystem.transform.position.x, ShootSystem.transform.position.y),
                     shootDirection,
-                    out RaycastHit hit,
                     float.MaxValue,
                     ShootConfig.HitMask
-                ))
+                );
+
+            if (hit)
             {
-                Debug.Log(hit.transform.name);
+                Debug.Log("Hit target: " + hit.transform.name);
             }
         }
     }

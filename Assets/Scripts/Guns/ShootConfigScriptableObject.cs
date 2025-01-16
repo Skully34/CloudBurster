@@ -8,6 +8,7 @@ namespace Guns.Gun
     {
         public LayerMask HitMask;
         public Vector3 Spread = Vector3.zero;
-        public float FireRate = 0.25f;
+        public float SecondsBetweenShots = 0.25f;
+        public int BaseAmmo = 30;
     }
 }

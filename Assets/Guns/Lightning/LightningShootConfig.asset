@@ -16,4 +16,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   Spread: {x: 0, y: 0, z: 0}
-  FireRate: 0.25
+  SecondsBetweenShots: 1
+  BaseAmmo: 5
