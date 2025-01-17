@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: BG_Chaser
   m_EditorClassIdentifier: 
   Graphs:
-  - rid: 3702058230727835979
+  - rid: 3702058256026043062
   RootGraph:
-    rid: 3702058230727835979
+    rid: 3702058256026043062
   m_DebugInfo: {fileID: 6354303418842757027}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 3702058230727835979
+    - rid: 3702058256026043062
       type: {class: BehaviorGraphModule, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         AuthoringAssetID:
@@ -30,21 +30,89 @@ MonoBehaviour:
           m_Value1: 10449581695153350842
         m_DebugInfo: {fileID: 0}
         Root:
-          rid: -2
+          rid: 3702058256026043063
         BlackboardReference:
-          rid: 3702058230727835980
+          rid: 3702058256026043064
         BlackboardGroupReferences: []
-        m_VersionTimestamp: 0
-    - rid: 3702058230727835980
+        m_VersionTimestamp: 638727295855274912
+    - rid: 3702058256026043063
+      type: {class: Start, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        ID:
+          m_Value0: 9650188547697865912
+          m_Value1: 4046409111836675504
+        Graph:
+          rid: 3702058256026043062
+        m_Parent:
+          rid: -2
+        m_Child:
+          rid: 3702058256026043065
+        Repeat: 1
+    - rid: 3702058256026043064
       type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Blackboard:
-          rid: 3702058230727835981
+          rid: 3702058256026043066
         m_Source: {fileID: -5987932473780211171}
-    - rid: 3702058230727835981
+    - rid: 3702058256026043065
+      type: {class: SwitchComposite, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        ID:
+          m_Value0: 1665694104305349879
+          m_Value1: 10361557870288183564
+        Graph:
+          rid: 3702058256026043062
+        m_Parent:
+          rid: 3702058256026043063
+        m_Children: []
+        EnumVariable:
+          rid: 3702058256026043067
+    - rid: 3702058256026043066
       type: {class: Blackboard, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
-        m_Variables: []
+        m_Variables:
+        - rid: 3702058256026043068
+        - rid: 3702058256026043069
+        - rid: 3702058256026043070
+    - rid: 3702058256026043067
+      type: {class: 'BlackboardVariable`1[[System.Enum, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+    - rid: 3702058256026043068
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 0}
+    - rid: 3702058256026043069
+      type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4408784219338900437
+          m_Value1: 763968240002768817
+        Name: COMPASS
+        m_Value:
+        - {x: 0, y: 100}
+        - {x: 0, y: -100}
+        - {x: 0, y: 100}
+        - {x: 0, y: -100}
+        - {x: 75, y: 75}
+        - {x: -75, y: 75}
+        - {x: 75, y: -75}
+        - {x: -75, y: -75}
+    - rid: 3702058256026043070
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11812416231211302504
+          m_Value1: 5700468687078049372
+        Name: Player
+        m_Value: {fileID: 1787406338678501513, guid: 82d104eb538cc4849ac83ad66a4c0420, type: 3}
 --- !u!114 &-5987932473780211171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,16 +125,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: BG_Chaser Blackboard
   m_EditorClassIdentifier: 
-  VersionTimestamp: 0
+  VersionTimestamp: 638727295855274912
   AssetID:
-    m_Value0: 0
-    m_Value1: 0
+    m_Value0: 1506410581917104725
+    m_Value1: 10449581695153350842
   m_Blackboard:
-    m_Variables: []
+    m_Variables:
+    - rid: 3702058256026042378
+    - rid: 3702058256026042394
+    - rid: 3702058256026042461
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3702058256026042378
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 0}
+    - rid: 3702058256026042394
+      type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 4408784219338900437
+          m_Value1: 763968240002768817
+        Name: COMPASS
+        m_Value:
+        - {x: 0, y: 100}
+        - {x: 0, y: -100}
+        - {x: 0, y: 100}
+        - {x: 0, y: -100}
+        - {x: 75, y: 75}
+        - {x: -75, y: 75}
+        - {x: 75, y: -75}
+        - {x: -75, y: -75}
+    - rid: 3702058256026042461
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11812416231211302504
+          m_Value1: 5700468687078049372
+        Name: Player
+        m_Value: {fileID: 1787406338678501513, guid: 82d104eb538cc4849ac83ad66a4c0420, type: 3}
 --- !u!114 &-2579449720791384819
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,16 +183,57 @@ MonoBehaviour:
   m_Name: BG_Chaser Blackboard
   m_EditorClassIdentifier: 
   AssetID:
-    m_Value0: 0
-    m_Value1: 0
-  m_Variables: []
-  m_VersionTimestamp: 0
+    m_Value0: 1506410581917104725
+    m_Value1: 10449581695153350842
+  m_Variables:
+  - rid: 3702058256026042370
+  - rid: 3702058256026042387
+  - rid: 3702058256026042450
+  m_VersionTimestamp: 638727295855274912
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: -5987932473780211171}
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 3702058256026042370
+      type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 3702058256026042387
+      type: {class: 'TypedVariableModel`1[[System.Collections.Generic.List`1[[UnityEngine.Vector2, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 4408784219338900437
+          m_Value1: 763968240002768817
+        Name: COMPASS
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value:
+        - {x: 0, y: 100}
+        - {x: 0, y: -100}
+        - {x: 0, y: 100}
+        - {x: 0, y: -100}
+        - {x: 75, y: 75}
+        - {x: -75, y: 75}
+        - {x: 75, y: -75}
+        - {x: -75, y: -75}
+    - rid: 3702058256026042450
+      type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11812416231211302504
+          m_Value1: 5700468687078049372
+        Name: Player
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 1787406338678501513, guid: 82d104eb538cc4849ac83ad66a4c0420, type: 3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,8 +248,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Blackboard: {fileID: -2579449720791384819}
   m_Description: 
-  m_Nodes: []
-  m_VersionTimestamp: 0
+  m_Nodes:
+  - rid: 3702058256026042368
+  - rid: 3702058256026043057
+  - rid: 3702058256026043061
+  m_VersionTimestamp: 638727295855274912
   m_DebugInfo: {fileID: 6354303418842757027}
   m_RuntimeGraph: {fileID: -6810293439853895260}
   AssetID:
@@ -115,14 +262,126 @@ MonoBehaviour:
     Story: 
     StoryVariableNames: []
     Variables: []
-  m_NodeModelsInfo: []
+  m_NodeModelsInfo:
+  - Name: On Start
+    Story: 
+    RuntimeTypeID:
+      m_Value0: 3335272451348827663
+      m_Value1: 11549843281177505721
+    Variables: []
+    NamedChildren: []
+  - Name: Switch
+    Story: 
+    RuntimeTypeID:
+      m_Value0: 7697158487413557231
+      m_Value1: 14836087705204215232
+    Variables:
+    - Name: EnumVariable
+      Type:
+        m_SerializableType: Unity.Behavior.BlackboardVariable, Unity.Behavior, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+      Tooltip: 
+    NamedChildren: []
+  - Name: Conditional Guard
+    Story: 
+    RuntimeTypeID:
+      m_Value0: 10845871997924083670
+      m_Value1: 4041440894818793834
+    Variables: []
+    NamedChildren: []
   m_Blackboards: []
   m_MainBlackboardAuthoringAsset: {fileID: -2579449720791384819}
   m_CommandBuffer:
     m_Commands: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3702058256026042368
+      type: {class: StartNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 0, y: 0}
+        ID:
+          m_Value0: 9650188547697865912
+          m_Value1: 4046409111836675504
+        Parents: []
+        PortModels:
+        - rid: 3702058256026042369
+        NodeType:
+          m_SerializableType: Unity.Behavior.Start, Unity.Behavior, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 3335272451348827663
+          m_Value1: 11549843281177505721
+        m_FieldValues: []
+        Repeat: 1
+    - rid: 3702058256026042369
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: OutputPort
+        m_PortDataFlowType: 1
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 3702058256026042368
+        m_Connections:
+        - rid: 3702058256026043058
+    - rid: 3702058256026043057
+      type: {class: SwitchNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        Position: {x: 3.5995822, y: 131.2054}
+        ID:
+          m_Value0: 1665694104305349879
+          m_Value1: 10361557870288183564
+        Parents: []
+        PortModels:
+        - rid: 3702058256026043058
+        NodeType:
+          m_SerializableType: Unity.Behavior.SwitchComposite, Unity.Behavior, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        NodeTypeID:
+          m_Value0: 7697158487413557231
+          m_Value1: 14836087705204215232
+        m_FieldValues:
+        - rid: 3702058256026043059
+    - rid: 3702058256026043058
+      type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        m_Name: InputPort
+        m_PortDataFlowType: 0
+        m_IsFloating: 0
+        m_NodeModel:
+          rid: 3702058256026043057
+        m_Connections:
+        - rid: 3702058256026042369
+    - rid: 3702058256026043059
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: EnumVariable
+        Type:
+          m_SerializableType: System.Enum, mscorlib, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        LocalValue:
+          rid: 3702058256026043060
+        LinkedVariable:
+          rid: -2
+    - rid: 3702058256026043060
+      type: {class: 'BlackboardVariable`1[[System.Enum, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+    - rid: 3702058256026043061
+      type: {class: StickyNoteModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        Position: {x: 112.062126, y: 182.63168}
+        ID:
+          m_Value0: 1002470651686858326
+          m_Value1: 498945805660351014
+        Parents: []
+        PortModels: []
+        Text: Would an Enum work?
 --- !u!114 &6354303418842757027
 MonoBehaviour:
   m_ObjectHideFlags: 0

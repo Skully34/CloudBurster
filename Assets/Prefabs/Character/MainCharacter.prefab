@@ -153,7 +153,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8092755230825577874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +166,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9703565f23db65a4dbd9276cdfaf610a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  dashSpeed: 10
+  jumpHeight: 4
+  jumpSpeed: 7
+  dashDistance: 3
+  move: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  jump: {fileID: -2099379676528639254, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  aim: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  dash: {fileID: -3626863869474670128, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  dashChargeLimit: 2
+  dashCDTime: 3
+  WeaponType: 
 --- !u!1 &2509333872122028131
 GameObject:
   m_ObjectHideFlags: 0
