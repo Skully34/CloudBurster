@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5914339413631185739}
   - component: {fileID: 2240316402112035446}
-  - component: {fileID: 2964146691197608881}
   - component: {fileID: 6401074742229426998}
   - component: {fileID: 8092755230825577874}
   m_Layer: 0
@@ -91,42 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2964146691197608881
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1787406338678501513}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 1
 --- !u!50 &6401074742229426998
 Rigidbody2D:
   serializedVersion: 5
@@ -177,6 +140,8 @@ MonoBehaviour:
   dash: {fileID: -3626863869474670128, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   dashChargeLimit: 2
   dashCDTime: 3
+  dashCollision: {fileID: 0}
+  grounded: 0
   WeaponType: 
 --- !u!1 &2509333872122028131
 GameObject:

@@ -1,3 +1,4 @@
+using Guns.Gun;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,6 +12,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] float dashDistance;
 
     CapsuleCollider2D playerCollision;
+    BoxCollider2D wallAntistick;
     Rigidbody2D rb;
 
     [SerializeField] InputActionReference move;
@@ -25,19 +27,20 @@ public class CharacterMovement : MonoBehaviour
     float dashCDTimeActual;
     bool burst = false;
     CircleCollider2D dashCollision;
+    public bool grounded = false;
 
 
     //  ContactFilter2D contactFilter;
     // Collider2D[] overlap;
     Collider2D recentCollision;
     bool colliding = false;
-    [SerializeField] public string WeaponType;
     Vector2 startPosition;
-
+    [SerializeField] public GunType gunType;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerCollision = GetComponent<CapsuleCollider2D>();
+        wallAntistick = GetComponent<BoxCollider2D>();
         dashCollision = GetComponent<CircleCollider2D>();
         dashChargeActual = dashChargeLimit;
 
@@ -46,11 +49,11 @@ public class CharacterMovement : MonoBehaviour
         void Update()
         {
 
-            if (dash.action.triggered) { Debug.Log("Zero"); Dash(); }
+            if (dash.action.triggered) { Dash(); }
 
             if (!dashing)
             {
-                if (jump.action.triggered) { Jump(); }
+                if (jump.action.triggered && grounded) { Jump(); }
                 if (move.action.inProgress) { MoveC(); }
             }
 
@@ -73,7 +76,7 @@ public class CharacterMovement : MonoBehaviour
     private void Jump()
     {
         rb.linearVelocityY = jumpSpeed;
-        Debug.Log("Update?");
+        
     }
 
     private void DashRecharge()
@@ -94,7 +97,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!dashing && dashChargeActual > 0)
         {
-            Debug.Log("One");
+            
             startPosition = new Vector2 (transform.position.x, transform.position.y);
             burst = false;
 
@@ -103,7 +106,9 @@ public class CharacterMovement : MonoBehaviour
             rb.gravityScale = 0;
             rb.linearVelocity = move.action.ReadValue<Vector2>() * dashSpeed;
             playerCollision.enabled = false;
+            wallAntistick.enabled = false;
             playerCollision.size /= 2;
+            wallAntistick.size /= 2;
 
 
 
@@ -115,7 +120,9 @@ public class CharacterMovement : MonoBehaviour
         dashing = false;
         rb.gravityScale = 1;
         playerCollision.size *=  2;
+        wallAntistick.size *= 2;
         playerCollision.enabled = true;
+        wallAntistick.enabled = true;
         dashCDTimeActual = dashCDTime;
 
         if (burst == true)
@@ -127,14 +134,14 @@ public class CharacterMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Three");
+       
         colliding = true;
         recentCollision = collision;
         CheckWeaponSwap();
     }
     private void OnTriggerExit2D(Collider2D Ecollision)
     {
-        Debug.Log("Four");
+        
         if (recentCollision == Ecollision)
         {
             colliding = false;
@@ -146,7 +153,7 @@ public class CharacterMovement : MonoBehaviour
         
         if (recentCollision.gameObject.TryGetComponent(out CloudScript Cloud))
             {
-                Debug.Log("wep");
+               
                 burst = true;
                 switch (Cloud.CloudType)
                 {
@@ -156,19 +163,19 @@ public class CharacterMovement : MonoBehaviour
                     }
                     case Cloudtype.Ash:
                     {
-                            WeaponType = "ash";
+                            gunType = GunType.Ash;
                             SwitchWeapon();
                             return;
                     }
                     case Cloudtype.Hail:
                         {
-                            WeaponType = "hail";
+                            gunType = GunType.Hail;
                             SwitchWeapon();
                             return;
                         }
                     case Cloudtype.Storm:
                         {
-                            WeaponType = "storm";
+                            gunType = GunType.Lightning;
                             SwitchWeapon();
                             return;
                         }
