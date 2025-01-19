@@ -46,7 +46,10 @@ namespace Guns.Gun
                     return;
                 }
 
-                _DoBulletShoot(shootDirection);
+                for (int i = 0; i < ShootConfig.BulletsPerShot; i++)
+                {
+                    _DoBulletShoot(shootDirection);
+                }
 
                 CurrentAmmo--;
             }
@@ -58,7 +61,7 @@ namespace Guns.Gun
             bullet.gameObject.SetActive(true);
             bullet.OnCollision += _HandleBulletCollision;
             bullet.OnTrigger += _HandleColliderTrigger;
-            bullet.transform.position = SpawnPoint;
+            bullet.transform.position = Model.transform.position;
             bullet.Spawn(shootDirection * ShootConfig.BulletForce, ShootConfig.BulletDespawnDelaySeconds);
 
         }

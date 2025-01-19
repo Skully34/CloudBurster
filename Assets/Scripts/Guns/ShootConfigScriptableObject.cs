@@ -10,6 +10,7 @@ namespace Guns.Gun
         public Vector3 Spread = Vector3.zero;
         public float SecondsBetweenShots = 0.25f;
         public int BaseAmmo = 30;
+        public int BulletsPerShot = 1;
 
         public Bullet BulletPrefab;
 
