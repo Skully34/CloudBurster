@@ -1,5 +1,6 @@
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Guns.Gun
 {
@@ -12,14 +13,14 @@ namespace Guns.Gun
         public GunType Type;
         public string Name;
         public GameObject ModelPrefab;
-        public Vector3 SpawnPoint;
+        public Vector2 SpawnPoint;
         public Vector3 SpawnRotation;
 
         private MonoBehaviour ActiveMonoBehaviour;
-        private ParticleSystem ShootSystem;
         private GameObject Model;
         private float LastShootTime;
         private float CurrentAmmo;
+        private ObjectPool<Bullet> BulletPool;
 
         public void Spawn(Transform parent, MonoBehaviour activeMonoBehaviour)
         {
@@ -32,7 +33,7 @@ namespace Guns.Gun
             Model.transform.localPosition = SpawnPoint;
             Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
 
-            ShootSystem = Model.GetComponentInChildren<ParticleSystem>();
+            BulletPool = new ObjectPool<Bullet>(_CreateBullet);
         }
 
         public void Shoot()
@@ -46,29 +47,56 @@ namespace Guns.Gun
                     return;
                 }
 
-                ShootSystem.Play();
-
                 Vector2 shootDirection = Vector2.right;
 
-                _DoHitscanShoot(shootDirection);
+                _DoBulletShoot(shootDirection);
 
                 CurrentAmmo--;
             }
         }
 
-        private void _DoHitscanShoot(Vector2 shootDirection)
+        private void _DoBulletShoot(Vector2 shootDirection)
         {
-            RaycastHit2D hit = Physics2D.Raycast(
-                    new Vector2(ShootSystem.transform.position.x, ShootSystem.transform.position.y),
-                    shootDirection,
-                    float.MaxValue,
-                    ShootConfig.HitMask
-                );
+            Bullet bullet = BulletPool.Get();
+            bullet.gameObject.SetActive(true);
+            bullet.OnCollision += _HandleBulletCollision;
+            bullet.OnTrigger += _HandleColliderTrigger;
+            bullet.transform.position = SpawnPoint;
+            bullet.Spawn(shootDirection * ShootConfig.BulletForce, ShootConfig.BulletDespawnDelaySeconds);
 
-            if (hit)
+        }
+
+        // Handle bullet collisions with Enemy layered colliders. These colliders are passed through
+        // unless number of objectsPenetrated exceeds ShootConfig.MaxObjectsBulletPenetrate
+        private void _HandleColliderTrigger(Bullet bullet, Collider2D collider, int objectsPenetrated)
+        {
+            if (collider == null || ShootConfig.MaxObjectsBulletPenetrate <= objectsPenetrated)
             {
-                Debug.Log("Hit target: " + hit.transform.name);
+                _DisableBullet(bullet);
             }
+
+            if (collider != null)
+            {
+                Debug.Log("Hit target: " + collider.gameObject.name);
+            }
+        }
+
+        // Handle bullet collisions with non-Enemy layered colliders.
+        private void _HandleBulletCollision(Bullet bullet)
+        {
+            Debug.Log("Collided with terrain.");
+            _DisableBullet(bullet);
+        }
+
+        private void _DisableBullet(Bullet bullet)
+        {
+            bullet.gameObject.SetActive(false);
+            BulletPool.Release(bullet);
+        }
+
+        private Bullet _CreateBullet()
+        {
+            return Instantiate(ShootConfig.BulletPrefab);
         }
     }
 }
