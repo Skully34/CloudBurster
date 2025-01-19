@@ -10,6 +10,7 @@ public class AimGun : MonoBehaviour
     [SerializeField] InputActionReference aim;
     [SerializeField] InputActionReference fire;
     [SerializeField] InputActionReference move;
+    Vector2 saveDirection;
 
     private void Update()
     {
@@ -26,7 +27,18 @@ public class AimGun : MonoBehaviour
         {
             if (fire.action.triggered)
             {
-                gun.shootDirection = move.action.ReadValue<Vector2>();
+                
+
+                if (move.action.ReadValue<Vector2>().magnitude != 0)
+                {
+                    gun.shootDirection = move.action.ReadValue<Vector2>();
+                    saveDirection = move.action.ReadValue<Vector2>();
+                }
+                else
+                {
+                    gun.shootDirection = saveDirection;
+                }
+                gun.SpawnPoint = new Vector2(gameObject.transform.localPosition.x + saveDirection.x, gameObject.transform.localPosition.y + (saveDirection.y * 1.3f));
                 gun.Shoot();
             }
         }

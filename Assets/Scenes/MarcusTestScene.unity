@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 165208088}
   - component: {fileID: 165208094}
   - component: {fileID: 165208093}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: PunchingBag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1070,7 +1070,7 @@ GameObject:
   - component: {fileID: 622264044}
   - component: {fileID: 622264045}
   - component: {fileID: 622264046}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1108,7 +1108,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 3670070
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -2088,11 +2088,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1787406338678501513, guid: 82d104eb538cc4849ac83ad66a4c0420, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 2509333872122028131, guid: 82d104eb538cc4849ac83ad66a4c0420, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 5914339413631185739, guid: 82d104eb538cc4849ac83ad66a4c0420, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2268,7 +2268,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1, y: 1}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &5645909091098474050
 MonoBehaviour:
@@ -2283,6 +2283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gun: {fileID: 11400000, guid: 4ebae053c6468428797e0af5af1e001c, type: 2}
+  aim: {fileID: 5645909091098474051}
 --- !u!114 &5645909091098474051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2296,7 +2297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 0}
-  aimWithArrows: 1
+  aimWithArrows: 0
   aim: {fileID: 5345244240903178238, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   fire: {fileID: 1793131638110873617, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   move: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

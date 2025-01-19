@@ -16,5 +16,8 @@ MonoBehaviour:
   Type: 2
   Name: Lightning
   ModelPrefab: {fileID: 819431111938727098, guid: 99bdcbade14904282a249b5ec86d86a2, type: 3}
-  SpawnPoint: {x: 0, y: 0, z: 0}
+  SpawnPoint: {x: 0, y: 0}
   SpawnRotation: {x: 0, y: 0, z: 0}
+  shootDirection: {x: 0, y: 0}
+  damage: 1
+  freezeAmount: 0

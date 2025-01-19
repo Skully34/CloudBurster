@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1572865
   Spread: {x: 0, y: 0, z: 0}
   SecondsBetweenShots: 0.1
   BaseAmmo: 1000

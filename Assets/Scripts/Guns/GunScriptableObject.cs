@@ -15,6 +15,9 @@ namespace Guns.Gun
         public GameObject ModelPrefab;
         public Vector2 SpawnPoint;
         public Vector3 SpawnRotation;
+        public Vector2 shootDirection;
+        public float damage;
+        public int freezeAmount;
 
         private MonoBehaviour ActiveMonoBehaviour;
         private GameObject Model;
@@ -30,7 +33,6 @@ namespace Guns.Gun
 
             Model = Instantiate(ModelPrefab);
             Model.transform.SetParent(parent, false);
-            Model.transform.localPosition = SpawnPoint;
             Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
 
             BulletPool = new ObjectPool<Bullet>(_CreateBullet);
@@ -47,7 +49,7 @@ namespace Guns.Gun
                     return;
                 }
 
-                Vector2 shootDirection = Vector2.right;
+
 
                 _DoBulletShoot(shootDirection);
 
@@ -78,6 +80,7 @@ namespace Guns.Gun
             if (collider != null)
             {
                 Debug.Log("Hit target: " + collider.gameObject.name);
+                collider.gameObject.GetComponent<BaseHealthHit>().Hit(damage, freezeAmount);
             }
         }
 

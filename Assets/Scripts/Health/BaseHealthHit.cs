@@ -100,7 +100,7 @@ public class BaseHealthHit : MonoBehaviour
         }
         if (!MC)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }
