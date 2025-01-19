@@ -15,9 +15,6 @@ namespace Guns.Gun
         public GameObject ModelPrefab;
         public Vector2 SpawnPoint;
         public Vector3 SpawnRotation;
-        public Vector2 shootDirection;
-        public float damage;
-        public int freezeAmount;
 
         private MonoBehaviour ActiveMonoBehaviour;
         private GameObject Model;
@@ -38,7 +35,7 @@ namespace Guns.Gun
             BulletPool = new ObjectPool<Bullet>(_CreateBullet);
         }
 
-        public void Shoot()
+        public void Shoot(Vector2 shootDirection)
         {
             if (Time.time > ShootConfig.SecondsBetweenShots + LastShootTime)
             {
@@ -48,8 +45,6 @@ namespace Guns.Gun
                     Debug.Log("Out of ammo m8");
                     return;
                 }
-
-
 
                 _DoBulletShoot(shootDirection);
 
@@ -80,7 +75,7 @@ namespace Guns.Gun
             if (collider != null)
             {
                 Debug.Log("Hit target: " + collider.gameObject.name);
-                collider.gameObject.GetComponent<BaseHealthHit>().Hit(damage, freezeAmount);
+                collider.gameObject.GetComponent<BaseHealthHit>().Hit(ShootConfig.BulletDamage, ShootConfig.FreezeAmount);
             }
         }
 

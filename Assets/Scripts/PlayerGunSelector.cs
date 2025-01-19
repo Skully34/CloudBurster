@@ -5,19 +5,19 @@ using UnityEngine;
 public class PlayerGunSelector : MonoBehaviour
 {
     [SerializeField] GunScriptableObject Gun;
-    [SerializeField] AimGun aim;
+    [SerializeField] AimGun Aim;
 
     void Start()
     {
         Gun.Spawn(this.transform, this);
-        aim.gun = Gun;
+        Aim.gun = Gun;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            Gun.Shoot();
+            Gun.Shoot(Vector2.right);
         }
     }
 }

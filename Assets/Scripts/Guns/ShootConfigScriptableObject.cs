@@ -17,5 +17,8 @@ namespace Guns.Gun
         public float BulletForce = 3000f;
         public int MaxObjectsBulletPenetrate = 1;
         public float BulletDespawnDelaySeconds = 2f;
+
+        public float BulletDamage = 0f;
+        public int FreezeAmount = 0;
     }
 }
