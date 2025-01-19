@@ -2280,7 +2280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Gun: {fileID: 11400000, guid: 4ebae053c6468428797e0af5af1e001c, type: 2}
-  AimWithArrows: 1
+  AimWithArrows: 0
   Aim: {fileID: 5345244240903178238, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   Fire: {fileID: 1793131638110873617, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   Move: {fileID: -1680190386980627800, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

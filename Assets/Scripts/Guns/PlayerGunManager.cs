@@ -30,16 +30,18 @@ public class PlayerGunManager : MonoBehaviour
 
         if (!AimWithArrows)
         {
+            if (Move.action.ReadValue<Vector2>().magnitude != 0)
+            {
+                CurrentOrientation = Move.action.ReadValue<Vector2>();
+                
+            }
+
             if (Fire.action.triggered)
             {
-                if (Move.action.ReadValue<Vector2>().magnitude != 0)
-                {
-                    CurrentOrientation = Move.action.ReadValue<Vector2>();
-                }
-
                 Gun.Shoot(CurrentOrientation);
             }
         }
+
     }
 
 }

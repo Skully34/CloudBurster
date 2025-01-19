@@ -18,10 +18,11 @@ MonoBehaviour:
   Spread: {x: 0, y: 0, z: 0}
   SecondsBetweenShots: 0.1
   BaseAmmo: 1000
-  BulletsPerShot: 1
+  ExtraBulletsPerShot: 0
+  BulletSpread: 0.5235988
   BulletPrefab: {fileID: 549310859895542310, guid: 163efbcc1702c4386a9a28d3c54a1b61, type: 3}
-  BulletForce: 200
+  BulletForce: 2000
   MaxObjectsBulletPenetrate: 1000
-  BulletDespawnDelaySeconds: 2000
+  BulletDespawnDelaySeconds: 0.5
   BulletDamage: 0
   FreezeAmount: 0
