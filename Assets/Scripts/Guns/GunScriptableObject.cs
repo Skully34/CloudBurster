@@ -1,3 +1,4 @@
+using System;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -37,6 +38,7 @@ namespace Guns.Gun
 
         public void Shoot(Vector2 shootDirection)
         {
+
             if (Time.time > ShootConfig.SecondsBetweenShots + LastShootTime)
             {
                 LastShootTime = Time.time;
@@ -48,8 +50,22 @@ namespace Guns.Gun
 
                 _DoBulletShoot(shootDirection);
 
+                Vector2 spreadStart = rotate(shootDirection, -ShootConfig.BulletSpread);
+                float spreadFactor = 2 * ShootConfig.BulletSpread / ShootConfig.ExtraBulletsPerShot;
+                for (int i = 0; i < ShootConfig.ExtraBulletsPerShot; i++)
+                {
+                    _DoBulletShoot(rotate(spreadStart, spreadFactor * (i+1)));
+                }
+
                 CurrentAmmo--;
             }
+        }
+        private static Vector2 rotate(Vector2 v, float delta)
+        {
+            return new Vector2(
+                v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
+                v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
+            );
         }
 
         private void _DoBulletShoot(Vector2 shootDirection)
@@ -58,7 +74,7 @@ namespace Guns.Gun
             bullet.gameObject.SetActive(true);
             bullet.OnCollision += _HandleBulletCollision;
             bullet.OnTrigger += _HandleColliderTrigger;
-            bullet.transform.position = SpawnPoint;
+            bullet.transform.position = Model.transform.position;
             bullet.Spawn(shootDirection * ShootConfig.BulletForce, ShootConfig.BulletDespawnDelaySeconds);
 
         }

@@ -10,6 +10,10 @@ namespace Guns.Gun
         public Vector3 Spread = Vector3.zero;
         public float SecondsBetweenShots = 0.25f;
         public int BaseAmmo = 30;
+        
+        // Set this to an even number plis I don't want to do math
+        public int ExtraBulletsPerShot = 0;
+        public float BulletSpread = Mathf.PI / 6;
 
         public Bullet BulletPrefab;
 
