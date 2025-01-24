@@ -35,7 +35,7 @@ public class CharacterMovement : MonoBehaviour
     Collider2D recentCollision;
     bool colliding = false;
     Vector2 startPosition;
-    [SerializeField] public GunType gunType;
+    [SerializeField] public GunType GunType;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -163,19 +163,19 @@ public class CharacterMovement : MonoBehaviour
                     }
                     case Cloudtype.Ash:
                     {
-                            gunType = GunType.Ash;
+                            GunType = GunType.Ash;
                             SwitchWeapon();
                             return;
                     }
                     case Cloudtype.Hail:
                         {
-                            gunType = GunType.Hail;
+                            GunType = GunType.Hail;
                             SwitchWeapon();
                             return;
                         }
                     case Cloudtype.Storm:
                         {
-                            gunType = GunType.Lightning;
+                            GunType = GunType.Lightning;
                             SwitchWeapon();
                             return;
                         }
