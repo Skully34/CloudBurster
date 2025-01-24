@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BaseHealthHit : MonoBehaviour
 {
@@ -14,12 +15,14 @@ public class BaseHealthHit : MonoBehaviour
     [SerializeField] float freezeTime;
     float freezeTimeActual;
     bool frozen;
-    [SerializeField] bool MC;
+    [SerializeField] public bool MC;
     Rigidbody2D rb;
+    CheckpointSystem checkpointSystem;
     
     void Start()
     {
         GetComponent<Rigidbody2D>();
+        checkpointSystem = FindFirstObjectByType<CheckpointSystem>();
     }
 
     
@@ -96,7 +99,9 @@ public class BaseHealthHit : MonoBehaviour
     {
         if (MC)
         {
-
+            Scene currentScene;
+            currentScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(currentScene.name);
         }
         if (!MC)
         {
