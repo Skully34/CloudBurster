@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Guns.Gun;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -5,7 +6,10 @@ using UnityEngine.InputSystem;
 [DisallowMultipleComponent]
 public class PlayerGunManager : MonoBehaviour
 {
-    [SerializeField] GunScriptableObject Gun;
+    private GunScriptableObject ActiveGun;
+
+    [SerializeField]
+    private List<GunScriptableObject> BaseGuns;
     [SerializeField] bool AimWithArrows;
 
     [SerializeField] InputActionReference Aim;
@@ -15,7 +19,36 @@ public class PlayerGunManager : MonoBehaviour
 
     void Start()
     {
-        Gun.Spawn(this.transform, this);
+        _SetupGun(GunType.None);
+    }
+
+    public void PickupGun(GunType type)
+    {
+        _DespawnActiveGun();
+        _SetupGun(type);
+    }
+
+
+    private void _SetupGun(GunType gunType)
+    {
+        GunScriptableObject gun = BaseGuns.Find(g => g.Type == gunType);
+
+        if (gun == null)
+        {
+            Debug.LogError($"Selected gun type doesn't exist {gunType}");
+        }
+
+        ActiveGun = gun.Clone() as GunScriptableObject;
+        ActiveGun.Spawn(this.transform, this);
+    }
+    private void _DespawnActiveGun()
+    {
+        if (ActiveGun != null)
+        {
+            ActiveGun.Despawn();
+        }
+
+        Destroy(ActiveGun);
     }
 
     private void Update()
@@ -24,7 +57,7 @@ public class PlayerGunManager : MonoBehaviour
         {
             if (Aim.action.triggered)
             {
-                Gun.Shoot(Aim.action.ReadValue<Vector2>());
+                ActiveGun.Shoot(Aim.action.ReadValue<Vector2>());
             }
         }
 
@@ -33,12 +66,12 @@ public class PlayerGunManager : MonoBehaviour
             if (Move.action.ReadValue<Vector2>().magnitude != 0)
             {
                 CurrentOrientation = Move.action.ReadValue<Vector2>();
-                
+
             }
 
             if (Fire.action.triggered)
             {
-                Gun.Shoot(CurrentOrientation);
+                ActiveGun.Shoot(CurrentOrientation);
             }
         }
 

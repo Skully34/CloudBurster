@@ -52,6 +52,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCharacterFull
       objectReference: {fileID: 0}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: Gun
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ebae053c6468428797e0af5af1e001c, type: 2}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: SelectedGunType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: BaseGuns.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: 'BaseGuns.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 32d167ca6ec114c498445cd86bff3095, type: 2}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: 'BaseGuns.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e2f15134f3f546068cb66ff67320b8d, type: 2}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: 'BaseGuns.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 138cf70b9f6b44b109c8388873c97ba7, type: 2}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: 'BaseGuns.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ebae053c6468428797e0af5af1e001c, type: 2}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: SelectableGuns.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: 'SelectableGuns.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 32d167ca6ec114c498445cd86bff3095, type: 2}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: 'SelectableGuns.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e2f15134f3f546068cb66ff67320b8d, type: 2}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: 'SelectableGuns.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 138cf70b9f6b44b109c8388873c97ba7, type: 2}
+    - target: {fileID: 7965305318781890784, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: 'SelectableGuns.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ebae053c6468428797e0af5af1e001c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

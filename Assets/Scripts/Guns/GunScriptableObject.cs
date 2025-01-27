@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -6,7 +7,7 @@ using UnityEngine.Pool;
 namespace Guns.Gun
 {
     [CreateAssetMenu(fileName = "Gun", menuName = "Guns/Gun", order = 0)]
-    public class GunScriptableObject : ScriptableObject
+    public class GunScriptableObject : ScriptableObject, System.ICloneable
     {
         // ReuConfigs
         public ShootConfigScriptableObject ShootConfig;
@@ -33,7 +34,12 @@ namespace Guns.Gun
             Model.transform.SetParent(parent, false);
             Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
 
-            BulletPool = new ObjectPool<Bullet>(_CreateBullet);
+            BulletPool = new ObjectPool<Bullet>(_CreateBullet, null, null, OnDestroyPoolObject, true, 10, 30);
+        }
+
+        void OnDestroyPoolObject(Bullet system)
+        {
+            Destroy(system.gameObject);
         }
 
         public void Shoot(Vector2 shootDirection)
@@ -54,12 +60,37 @@ namespace Guns.Gun
                 float spreadFactor = 2 * ShootConfig.BulletSpread / ShootConfig.ExtraBulletsPerShot;
                 for (int i = 0; i < ShootConfig.ExtraBulletsPerShot; i++)
                 {
-                    _DoBulletShoot(rotate(spreadStart, spreadFactor * (i+1)));
+                    _DoBulletShoot(rotate(spreadStart, spreadFactor * (i + 1)));
                 }
 
                 CurrentAmmo--;
             }
         }
+
+        /// <summary>
+        /// Despawns the active gameobjects and cleans up pools.
+        /// </summary>
+        public void Despawn()
+        {
+            Model.SetActive(false);
+            Destroy(Model);
+            if (BulletPool != null)
+            {
+                ActiveMonoBehaviour.StartCoroutine(_DestroyBulletPool(BulletPool));
+            }
+        }
+
+        /// <summary>
+        /// Wait for all bullets to be inactive to clear, otherwise active bullets won't be cleaned
+        /// up when Clear() is called.
+        /// </summary>
+        private IEnumerator _DestroyBulletPool(ObjectPool<Bullet> bulletPool)
+        {
+            yield return new WaitUntil(() => bulletPool.CountActive == 0);
+            BulletPool.Clear();
+        }
+
+
         private static Vector2 rotate(Vector2 v, float delta)
         {
             return new Vector2(
@@ -90,7 +121,7 @@ namespace Guns.Gun
 
             if (collider != null)
             {
-                Debug.Log("Hit target: " + collider.gameObject.name);
+                // Debug.Log("Hit target: " + collider.gameObject.name);
                 collider.gameObject.GetComponent<BaseHealthHit>().Hit(ShootConfig.BulletDamage, ShootConfig.FreezeAmount);
             }
         }
@@ -98,7 +129,7 @@ namespace Guns.Gun
         // Handle bullet collisions with non-Enemy layered colliders.
         private void _HandleBulletCollision(Bullet bullet)
         {
-            Debug.Log("Collided with terrain.");
+            // Debug.Log("Collided with terrain.");
             _DisableBullet(bullet);
         }
 
@@ -111,6 +142,21 @@ namespace Guns.Gun
         private Bullet _CreateBullet()
         {
             return Instantiate(ShootConfig.BulletPrefab);
+        }
+        public object Clone()
+        {
+            GunScriptableObject config = CreateInstance<GunScriptableObject>();
+
+            config.Type = Type;
+            config.Name = Name;
+            config.name = name;
+            config.ShootConfig = ShootConfig.Clone() as ShootConfigScriptableObject;
+
+            config.ModelPrefab = ModelPrefab;
+            config.SpawnPoint = SpawnPoint;
+            config.SpawnRotation = SpawnRotation;
+
+            return config;
         }
     }
 }

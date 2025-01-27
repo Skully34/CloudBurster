@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f9e392ffefa44e0abbe3ffe0c770215, type: 3}
-  m_Name: LightningShootConfig
+  m_Name: NoneShootConfig
   m_EditorClassIdentifier: 
   HitMask:
     serializedVersion: 2
-    m_Bits: 524289
+    m_Bits: 0
   Spread: {x: 0, y: 0, z: 0}
-  SecondsBetweenShots: 1
-  BaseAmmo: 100
+  SecondsBetweenShots: 0
+  BaseAmmo: 0
   ExtraBulletsPerShot: 0
   BulletSpread: 0
   BulletPrefab: {fileID: 8771886477196257221, guid: bcf1f7f40b9856440ad76eae7f27bd42, type: 3}
-  BulletForce: 2000
-  MaxObjectsBulletPenetrate: 1000
-  BulletDespawnDelaySeconds: 0.5
-  BulletDamage: 1
+  BulletForce: 0
+  MaxObjectsBulletPenetrate: 0
+  BulletDespawnDelaySeconds: 0
+  BulletDamage: 0
   FreezeAmount: 0

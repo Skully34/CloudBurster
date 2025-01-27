@@ -1,5 +1,6 @@
-using Unity.Collections;
 using UnityEngine;
+using System.Reflection;
+using System;
 
 namespace Guns.Gun
 {
@@ -10,7 +11,7 @@ namespace Guns.Gun
         public Vector3 Spread = Vector3.zero;
         public float SecondsBetweenShots = 0.25f;
         public int BaseAmmo = 30;
-        
+
         // Set this to an even number plis I don't want to do math
         public int ExtraBulletsPerShot = 0;
         public float BulletSpread = Mathf.PI / 6;
@@ -24,5 +25,23 @@ namespace Guns.Gun
 
         public float BulletDamage = 0f;
         public int FreezeAmount = 0;
+
+        public object Clone()
+        {
+            ShootConfigScriptableObject config = CreateInstance<ShootConfigScriptableObject>();
+
+            CopyValues(this, config);
+
+            return config;
+        }
+
+        private static void CopyValues<T>(T Base, T Copy)
+        {
+            Type type = Base.GetType();
+            foreach (FieldInfo field in type.GetFields())
+            {
+                field.SetValue(Copy, field.GetValue(Base));
+            }
+        }
     }
 }
