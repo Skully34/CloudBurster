@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Reflection;
 using System;
+using UnityEngine.Audio;
 
 namespace Guns.Gun
 {
@@ -16,6 +17,7 @@ namespace Guns.Gun
         public int ExtraBulletsPerShot = 0;
         public float BulletSpread = Mathf.PI / 6;
 
+        
         public Bullet BulletPrefab;
 
         // Can't be too high otherwise colliders won't be detected MAX 3000f

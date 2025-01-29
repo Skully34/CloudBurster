@@ -28,7 +28,7 @@ public class CharacterMovement : MonoBehaviour
     bool burst = false;
     CircleCollider2D dashCollision;
     public bool grounded = false;
-
+    AudioSource audio;
 
     //  ContactFilter2D contactFilter;
     // Collider2D[] overlap;
@@ -45,6 +45,7 @@ public class CharacterMovement : MonoBehaviour
         dashCollision = GetComponent<CircleCollider2D>();
         dashChargeActual = dashChargeLimit;
         playerGunManager = GetComponent<PlayerGunManager>();
+        audio = GetComponent<AudioSource>();
 
     }
 
@@ -92,6 +93,8 @@ public class CharacterMovement : MonoBehaviour
             dashCDTimeActual -= Time.deltaTime;
             DashRecharge();
         }
+
+        if(rb.linearVelocity.magnitude < .5f) { audio.Stop(); }
     }
 
     private void Jump()
@@ -112,6 +115,8 @@ public class CharacterMovement : MonoBehaviour
     {
 
         rb.linearVelocityX = move.action.ReadValue<Vector2>().x * speed;
+        if (grounded && !audio.isPlaying) { audio.Play(); }
+        if (!grounded) { audio.Stop(); }
 
     }
     private void Dash()

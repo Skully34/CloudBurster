@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Pool;
 
 namespace Guns.Gun
@@ -12,6 +13,7 @@ namespace Guns.Gun
         // ReuConfigs
         public ShootConfigScriptableObject ShootConfig;
 
+        public AudioResource BulletSound;
         public GunType Type;
         public string Name;
         public GameObject ModelPrefab;
@@ -23,6 +25,7 @@ namespace Guns.Gun
         private float LastShootTime;
         private float CurrentAmmo;
         private ObjectPool<Bullet> BulletPool;
+        AudioSource aadio;
 
         public void Spawn(Transform parent, MonoBehaviour activeMonoBehaviour)
         {
@@ -33,6 +36,9 @@ namespace Guns.Gun
             Model = Instantiate(ModelPrefab);
             Model.transform.SetParent(parent, false);
             Model.transform.localRotation = Quaternion.Euler(SpawnRotation);
+            aadio = ModelPrefab.GetComponent<AudioSource>();
+            
+            
 
             BulletPool = new ObjectPool<Bullet>(_CreateBullet, null, null, OnDestroyPoolObject, true, 10, 30);
         }
@@ -56,6 +62,8 @@ namespace Guns.Gun
 
                 _DoBulletShoot(shootDirection);
 
+                if (!aadio.isActiveAndEnabled) { aadio.enabled = true; }
+                    aadio.Play(); 
                 Vector2 spreadStart = rotate(shootDirection, -ShootConfig.BulletSpread);
                 float spreadFactor = 2 * ShootConfig.BulletSpread / ShootConfig.ExtraBulletsPerShot;
                 for (int i = 0; i < ShootConfig.ExtraBulletsPerShot; i++)
