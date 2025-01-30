@@ -28,7 +28,9 @@ public class CharacterMovement : MonoBehaviour
     bool burst = false;
     CircleCollider2D dashCollision;
     public bool grounded = false;
-    AudioSource audio;
+    AudioSource fsAudio;
+    AudioSource dashAudio;
+    public AudioSource testAudio;
 
     //  ContactFilter2D contactFilter;
     // Collider2D[] overlap;
@@ -45,7 +47,8 @@ public class CharacterMovement : MonoBehaviour
         dashCollision = GetComponent<CircleCollider2D>();
         dashChargeActual = dashChargeLimit;
         playerGunManager = GetComponent<PlayerGunManager>();
-        audio = GetComponent<AudioSource>();
+        fsAudio = GetComponent<AudioSource>();
+        dashAudio = GetComponent<AudioSource>();
 
     }
 
@@ -71,7 +74,11 @@ public class CharacterMovement : MonoBehaviour
         // Test code end
 
 
-        if (dash.action.triggered) { Dash(); }
+        if (dash.action.triggered) 
+        { 
+            Dash(); 
+            if (!testAudio.isPlaying) { testAudio.Play(); }
+        }
 
         if (!dashing)
         {
@@ -94,7 +101,7 @@ public class CharacterMovement : MonoBehaviour
             DashRecharge();
         }
 
-        if(rb.linearVelocity.magnitude < .5f) { audio.Stop(); }
+        if(rb.linearVelocity.magnitude < .5f) { fsAudio.Stop(); }
     }
 
     private void Jump()
@@ -115,8 +122,8 @@ public class CharacterMovement : MonoBehaviour
     {
 
         rb.linearVelocityX = move.action.ReadValue<Vector2>().x * speed;
-        if (grounded && !audio.isPlaying) { audio.Play(); }
-        if (!grounded) { audio.Stop(); }
+        if (grounded && !fsAudio.isPlaying) { fsAudio.Play(); }
+        if (!grounded) { fsAudio.Stop(); }
 
     }
     private void Dash()
