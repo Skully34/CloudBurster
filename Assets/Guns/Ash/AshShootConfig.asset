@@ -20,8 +20,7 @@ MonoBehaviour:
   BaseAmmo: 100
   ExtraBulletsPerShot: 10
   BulletSpread: 0.5235988
-  BulletSound: {fileID: 8300000, guid: 92c703b5fe8a7468785e5882e374f0e8, type: 3}
-  BulletPrefab: {fileID: 8771886477196257221, guid: bcf1f7f40b9856440ad76eae7f27bd42, type: 3}
+  BulletPrefab: {fileID: 6955852595978974968, guid: 92b8ecb9d35f1c7499e9216194cec042, type: 3}
   BulletForce: 300
   MaxObjectsBulletPenetrate: 1
   BulletDespawnDelaySeconds: 0.8

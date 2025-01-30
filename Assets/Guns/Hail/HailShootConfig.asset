@@ -20,8 +20,8 @@ MonoBehaviour:
   BaseAmmo: 300
   ExtraBulletsPerShot: 1
   BulletSpread: 0
-  BulletPrefab: {fileID: 8771886477196257221, guid: bcf1f7f40b9856440ad76eae7f27bd42, type: 3}
-  BulletForce: 500
+  BulletPrefab: {fileID: 2039714334553635993, guid: 282e14fc97bbafa4d86c8e67a0a99893, type: 3}
+  BulletForce: 1000
   MaxObjectsBulletPenetrate: 1
   BulletDespawnDelaySeconds: 2
   BulletDamage: 0.5
