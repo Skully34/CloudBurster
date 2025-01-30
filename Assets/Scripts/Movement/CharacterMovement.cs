@@ -28,9 +28,10 @@ public class CharacterMovement : MonoBehaviour
     bool burst = false;
     CircleCollider2D dashCollision;
     public bool grounded = false;
+    // using multiple audio sources on a single asset requires exposing them
+    // this isn't efficient but it works ¯\_(ツ)_/¯
     AudioSource fsAudio;
-    AudioSource dashAudio;
-    public AudioSource testAudio;
+    public AudioSource dashAudio;
 
     //  ContactFilter2D contactFilter;
     // Collider2D[] overlap;
@@ -77,7 +78,7 @@ public class CharacterMovement : MonoBehaviour
         if (dash.action.triggered) 
         { 
             Dash(); 
-            if (!testAudio.isPlaying) { testAudio.Play(); }
+            if (!dashAudio.isPlaying) { dashAudio.Play(); }
         }
 
         if (!dashing)
