@@ -53,6 +53,10 @@ PrefabInstance:
       value: MainCharacterFull
       objectReference: {fileID: 0}
     - target: {fileID: 6235537941940622457, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
+      propertyPath: fsAudio
+      value: 
+      objectReference: {fileID: -227115867820517085}
+    - target: {fileID: 6235537941940622457, guid: 0a76f7e8269a0584a85c7cfa0743aff7, type: 3}
       propertyPath: dashAudio
       value: 
       objectReference: {fileID: 4229253929016398797}

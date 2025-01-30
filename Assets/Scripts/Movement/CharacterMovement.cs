@@ -30,7 +30,7 @@ public class CharacterMovement : MonoBehaviour
     public bool grounded = false;
     // using multiple audio sources on a single asset requires exposing them
     // this isn't efficient but it works ¯\_(ツ)_/¯
-    AudioSource fsAudio;
+    public AudioSource fsAudio;
     public AudioSource dashAudio;
 
     //  ContactFilter2D contactFilter;
@@ -48,8 +48,8 @@ public class CharacterMovement : MonoBehaviour
         dashCollision = GetComponent<CircleCollider2D>();
         dashChargeActual = dashChargeLimit;
         playerGunManager = GetComponent<PlayerGunManager>();
-        fsAudio = GetComponent<AudioSource>();
-        dashAudio = GetComponent<AudioSource>();
+        // fsAudio = GetComponent<AudioSource>();
+        // dashAudio = GetComponent<AudioSource>();
 
     }
 
@@ -77,8 +77,8 @@ public class CharacterMovement : MonoBehaviour
 
         if (dash.action.triggered) 
         { 
+            if (dashChargeActual >= 1) {dashAudio.Play();}
             Dash(); 
-            if (!dashAudio.isPlaying) { dashAudio.Play(); }
         }
 
         if (!dashing)
@@ -131,7 +131,6 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!dashing && dashChargeActual > 0)
         {
-
             startPosition = new Vector2(transform.position.x, transform.position.y);
             burst = false;
 
@@ -143,6 +142,7 @@ public class CharacterMovement : MonoBehaviour
             wallAntistick.enabled = false;
             playerCollision.size /= 2;
             wallAntistick.size /= 2;
+     
 
 
 
